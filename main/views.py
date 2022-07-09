@@ -40,7 +40,7 @@ def detail(request, id):
                 print(user_session)
                 user = user_read(user_session['users'][0]['email'])
                 data = attend_read(id)
-                qr = custom_qr.get_qr("http://127.0.0.1:8000/absen/"+id)
+                qr = custom_qr.get_qr("https://jakun-attendance.herokuapp.com/absen/"+id)
                 print(qr)
                 return render(request, 'details.html', {
                     'nama': user['nama'],
@@ -50,7 +50,7 @@ def detail(request, id):
                 })
     except:
         data = attend_read(id)
-        qr = custom_qr.get_qr("http://127.0.0.1:8000/absen/" + id)
+        qr = custom_qr.get_qr("https://jakun-attendance.herokuapp.com/absen/" + id)
         return render(request, 'details.html', {
             'data': data,
             'id': id,
