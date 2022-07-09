@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Cari NPM</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}"/>
+{% endblock meta %}
+{% block content %}
+    <div class="content-root">
+        <div class="form-root">
+            <h1 id="judul-form">Cari berdasarkan NPM</h1>
+            <section>
+                <form action="postsearch" method="post" id="form">
+                    {% csrf_token %}
+                    <label for="npm">NPM</label>
+                    <input type="number" id="npm" name="npm" placeholder="NPM anda..."><br/>
+
+                    <button type="submit" class="button" value="submit" id="submitbutton">Cari</button>
+                </form>
+            </section>
+        </div>
+    </div>
+{% endblock content %}

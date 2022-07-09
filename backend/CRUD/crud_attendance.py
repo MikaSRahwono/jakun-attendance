@@ -3,6 +3,7 @@ from firebase_admin import credentials, firestore, storage
 
 from backend.misc import firebase_init
 import datetime
+import pytz
 
 # --------------------------
 # Initialize Firebase Admin
@@ -28,8 +29,9 @@ def attend_create(nama, telepon, email, npm, fakultas, jurusan, ukuran):
             'fakultas': fakultas,
             'jurusan': jurusan,
             'ukuran': ukuran,
+            'link_page': 'https://jakun-attendance.herokuapp.com/detail'+npm,
             'absence': -1,
-            'waktu_pengajuan': datetime.datetime.now()
+            'waktu_pengajuan': datetime.datetime.now(pytz.timezone('Asia/Jakarta')).strftime('%c')
         }
         db.collection('attendance').document(npm).set(data)
 
@@ -49,7 +51,8 @@ def absent(npm, nama):
     try:
         db.collection('attendance').document(npm).update({
             "absence": 1,
-            "pengabsen": nama
+            "pengabsen": nama,
+            "waktu_pengambilan": datetime.datetime.now(pytz.timezone('Asia/Jakarta')).strftime('%c')
         })
         return ""
     except:

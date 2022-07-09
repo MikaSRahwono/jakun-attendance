@@ -37,3 +37,5 @@ urlpatterns = [
     path('user/', include(('user.urls', 'user'), namespace='user')),
     path('backend/', include('backend.urls'))
 ]
+
+handler404 = "attendance_system.views.page_not_found_view"

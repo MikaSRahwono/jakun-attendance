@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect
 
 from backend.CRUD.crud_attendance import attend_create, absent, attend_read
 from django.contrib import auth
+from django.http import Http404
 
 from backend.CRUD.crud_user import user_read
 from backend.misc import firebase_init, custom_qr
 
 fauth = firebase_init
 
+def index(request):
+    return redirect("main:form")
 
 # ---------------------
 # Authentication
@@ -42,20 +45,26 @@ def detail(request, id):
                 data = attend_read(id)
                 qr = custom_qr.get_qr("https://jakun-attendance.herokuapp.com/absen/"+id)
                 print(qr)
-                return render(request, 'details.html', {
-                    'nama': user['nama'],
-                    'data': data,
-                    'qr': qr,
-                    'id': id
-                })
+                if(data):
+                    return render(request, 'details.html', {
+                        'nama': user['nama'],
+                        'data': data,
+                        'qr': qr,
+                        'id': id
+                    })
+                else:
+                    raise Http404
     except:
         data = attend_read(id)
         qr = custom_qr.get_qr("https://jakun-attendance.herokuapp.com/absen/" + id)
-        return render(request, 'details.html', {
-            'data': data,
-            'id': id,
-            'qr': qr,
-        })
+        if(data):
+            return render(request, 'details.html', {
+                'data': data,
+                'id': id,
+                'qr': qr,
+            })
+        else:
+            raise Http404
 
 
 def absen(request, id):
@@ -68,3 +77,18 @@ def absen(request, id):
     except:
         pass
     return redirect('main:detail', id=id)
+
+def search(request):
+    try:
+        if (request.session['uid']):
+            user_session = fauth.get_account_info(request.session['uid'])
+            if (user_session):
+                return render(request, 'cari.html')
+        else:
+            raise Http404
+    except:
+        return redirect('user:signin')
+
+def postsearch(request):
+    npm = request.POST.get('npm')
+    return redirect('main:detail', id=npm)

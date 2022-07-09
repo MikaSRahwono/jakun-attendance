@@ -10,7 +10,7 @@ fauth = firebase_init
 # Authentication
 # --------------------
 def signUp(request):
-	return render(request, 'signUp.html')
+	return render(request, 'signup.html')
 
 def postSignUp(request):
 	email = request.POST.get("email")
@@ -25,7 +25,7 @@ def postSignUp(request):
 		return redirect("user:signup")
 
 def signIn(request):
-	return render(request, 'signIn.html')
+	return render(request, 'signin.html')
 
 def postSignIn(request):
 	email = request.POST.get("email")

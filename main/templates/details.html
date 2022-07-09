@@ -60,6 +60,14 @@
                 <p>{{ data.telepon }}<br>{{ data.email }}</p>
                 <h3>Ukuran Jakun</h3>
                 <p>{{ data.ukuran }}</p>
+                <h3>Waktu Isi Form</h3>
+                <p>{{ data.waktu_pengajuan }}</p>
+                {% if data.absence == 1 %}
+                    <h3>Waktu Pengambilan</h3>
+                    <p>{{ data.waktu_pengambilan }}</p>
+                    <h3>Pengabsen</h3>
+                    <p>{{ data.pengabsen }}</p>
+                {% endif %}
             </div>
         </div>
     </div>
