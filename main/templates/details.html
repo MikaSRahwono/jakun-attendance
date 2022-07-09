@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Detail Request</title>
+    <link rel="stylesheet" href="{% static 'main/css/style-details.css' %}">
+{% endblock meta %}
+
+{% block content %}
+<div class="content-root">
+    <div class="details-judul detail-only-desktop">
+        <div class="row">
+            <div class="column">
+                {% if data.absence == -1 %}
+                    <object class="object" data="{% static 'main/svg/Depression-pana.svg' %}" type="image/svg+xml"></object>
+                    <h1 >Belum Mengambil</h1>
+                {% elif data.absence == 1 %}
+                    <object class="object" data="{% static 'main/svg/Young_and_happy-pana.svg' %}" type="image/svg+xml"></object>
+                    <h1>Sudah Mengambil</h1>
+                {% endif %}
+            </div>
+            <div class="column">
+                <h3>Screenshot QR ini<br>untuk pengambilan Jakun</h3>
+                <img src="{{ qr }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="details-judul detail-only-mobile">
+        <div class="row">
+            {% if data.absence == -1 %}
+                <object class="object" data="{% static 'main/svg/Depression-pana.svg' %}" type="image/svg+xml"></object>
+                <h1 >Belum Mengambil</h1>
+            {% elif data.absence == 1 %}
+                <object class="object" data="{% static 'main/svg/Young_and_happy-pana.svg' %}" type="image/svg+xml"></object>
+                <h1>Sudah Mengambil</h1>
+            {% endif %}
+            <div class="filler"></div>
+            <h2>Screenshot QR ini<br>untuk pengambilan Jakun</h2>
+            <img src="{{ qr }}">
+        </div>
+    </div>
+
+    <div class="details-info detail-only-desktop">
+        <h1>Data Mahasiswa</h1>
+        <br>
+        <div class="row">
+            <div class="column">
+                <h3>Nama</h3>
+                <p>{{ data.nama }}</p>
+                <h3>Fakultas</h3>
+                <p>{{ data.fakultas }}</p>
+                <h3>Jurusan</h3>
+                <p>{{ data.jurusan }}</p>
+                <h3>NPM</h3>
+                <p>{{ data.npm }}</p>
+            </div>
+            <div class="column">
+                <h3>Kontak</h3>
+                <p>{{ data.telepon }}<br>{{ data.email }}</p>
+                <h3>Ukuran Jakun</h3>
+                <p>{{ data.ukuran }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="details-info only-mobile">
+        <h1>Data Pesanan</h1>
+        <br>
+        <h3>Nama</h3>
+        <p>{{ data.nama }}</p>
+        <h3>Fakultas</h3>
+        <p>{{ data.fakultas }}</p>
+        <h3>Jurusan</h3>
+        <p>{{ data.jurusan }}</p>
+        <h3>NPM</h3>
+        <p>{{ data.npm }}</p>
+        <h3>Kontak</h3>
+        <p>{{ data.telepon }}<br>{{ data.email }}</p>
+        <h3>Ukuran Jakun</h3>
+        <p>{{ data.ukuran }}</p>
+    </div>
+
+    <div class="button-outer">
+        {% if nama and data.absence == -1 %}
+        <form action="../absen/{{ id }}" method="post">
+            {% csrf_token %}
+            <input name="id_request" type="hidden" value={{ id }}>
+            <input name="nama" type="hidden" value={{ nama }}>
+            <button class="button" type="submit">Hadir</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

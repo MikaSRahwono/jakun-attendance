@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'base/css/style.css' %}">
+  <link rel="shortcut icon" href="{% static 'base/img/favicon.png' %}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="application/javascript" src="{% static 'base/js/script.js' %}"></script>
+  {% block meta %}
+  {% endblock meta %}
+</head>
+
+<body>
+	<header {% if '/' == request.path %}class="header-transparent"{% else %}class="header-white"{% endif %}>
+        <a href="{% url 'main:form' %}" class="logo"><img src="{% static 'base/img/logo-biro-jodoh.png' %}" style="width:8.75rem; height:3.5rem;"></a>
+        <input type="checkbox" class="nav-toggle" id="nav-toggle">
+
+        <label for="nav-toggle" class="nav-toggle-label" id="nav-toggle-label"><span></span></label>
+
+    </header>
+
+    <div class="content-container">
+      	{% block content %}
+        {% endblock content %}
+	</div>
+
+    <footer>
+        <div class="footer-upper">
+            <div class="footer1">
+                <a href="{% url 'main:form' %}"><img src="{% static 'base/img/logo-biro-jodoh.png' %}" style="width:12.5rem; height:5rem;"></a>
+            </div>
+            <div class="footer3 nav-only-mobile">
+                <p>
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <use href="{% static 'base/svg/base-sprite-sheet.svg' %}#copyright-logo"></use>
+                    </svg>
+                    2022 - Badan Eksekutif Mahasiswa UI <br> Biro Multimedia
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom nav-only-desktop">
+            <div>
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use href="{% static 'base/svg/base-sprite-sheet.svg' %}#copyright-logo"></use>
+                </svg>
+                <p>2022 - Badan Eksekutif Mahasiswa UI <br> Biro Multimedia</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
