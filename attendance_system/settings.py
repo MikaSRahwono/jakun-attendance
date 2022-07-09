@@ -33,7 +33,7 @@ if PRODUCTION:
     SECRET_KEY = os.getenv('SECRET_KEY_DJANGO')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["jakun-attendance.herokuapp.com", "*"]
 
