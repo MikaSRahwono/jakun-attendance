@@ -1,5 +1,6 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
-from backend.CRUD.crud_user import user_create
+from backend.CRUD.crud_user import user_create, user_read
 from django.contrib import auth
 from backend.misc import firebase_init
 
@@ -10,7 +11,16 @@ fauth = firebase_init
 # Authentication
 # --------------------
 def signUp(request):
-	return render(request, 'signup.html')
+	try:
+		if (request.session['uid']):
+			user_session = fauth.get_account_info(request.session['uid'])
+			if (user_session):
+				user = user_read(user_session['users'][0]['email'])
+				if (user['email'] == "admin_jakun@admin.com"):
+					return render(request, 'signup.html')
+	except:
+			raise Http404
+
 
 def postSignUp(request):
 	email = request.POST.get("email")
