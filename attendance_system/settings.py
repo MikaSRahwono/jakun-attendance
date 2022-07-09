@@ -30,7 +30,7 @@ SECRET_KEY = 'ee5+0=c^-0t_5pv9&!b(z)9*$+q+o()a$pfngttx2n0chn#x&7'
 PRODUCTION = os.getenv('DATABASE_URL') is not None
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not PRODUCTION
+DEBUG = True
 
 ALLOWED_HOSTS = ["https://jakun-attendance.herokuapp.com"]
 
