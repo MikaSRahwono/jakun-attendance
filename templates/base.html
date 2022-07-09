@@ -34,6 +34,9 @@
                 </div>
                 {% elif request.session.uid %}
                 <li>
+                    <a href="{% url 'user:signup' %}">Tambah Panitia</a>
+                </li>
+                <li>
                     <a href="{% url 'main:search' %}">Cari NPM</a>
                 </li>
                 <li class="nav-only-desktop">
