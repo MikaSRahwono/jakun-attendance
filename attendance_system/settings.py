@@ -35,7 +35,7 @@ if PRODUCTION:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["jakun-attendance.herokuapp.com", "*"]
+ALLOWED_HOSTS = ["jaketkuningui2022.herokuapp.com", "*"]
 
 if not PRODUCTION:
     ALLOWED_HOSTS += ['.localhost', '127.0.0.1', '[::1]']
