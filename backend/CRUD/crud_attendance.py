@@ -19,7 +19,7 @@ db = firestore.client()
 # --------------------------
 # CRUD Functions
 # --------------------------
-def attend_create(nama, telepon, email, npm, fakultas, jurusan, ukuran):
+def attend_create(nama, telepon, email, npm, fakultas, jurusan, ukuran, jalur):
     try:
         data = {
             'nama': nama,
@@ -29,8 +29,9 @@ def attend_create(nama, telepon, email, npm, fakultas, jurusan, ukuran):
             'fakultas': fakultas,
             'jurusan': jurusan,
             'ukuran': ukuran,
-            'link_page': 'https://jakun-attendance.herokuapp.com/detail'+npm,
+            'link_page': 'https://jakun-attendance.herokuapp.com/detail/'+npm,
             'absence': -1,
+            'jalur': jalur,
             'waktu_pengajuan': datetime.datetime.now(pytz.timezone('Asia/Jakarta')).strftime('%c')
         }
         db.collection('attendance').document(npm).set(data)

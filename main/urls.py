@@ -9,5 +9,6 @@ urlpatterns = [
     path('absen/<str:id>', views.absen, name='absen'),
     path('search', views.search, name='search'),
     path('postsearch', views.postsearch, name='postsearch'),
+    path('faq', views.faq, name='faq')
 
 ]

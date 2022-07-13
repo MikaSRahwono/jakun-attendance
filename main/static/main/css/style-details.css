@@ -198,6 +198,33 @@ object {
     width: 40vw;
 }
 
+li {
+    margin: 0.5em;
+}
+
+.attention{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    margin-top: 2em;
+    text-align: center;
+    font-size: 0.75em;
+}
+
+.only-desktop {
+    display: none;
+}
+
+.only-mobile {
+    display: block;
+}
+
+.kontak-adkes{
+    margin: 1em;
+}
+
+
 /* 100% Image Width on Smaller Screens */
 @media only screen and (min-width: 800px){
   .content-root{
@@ -233,6 +260,20 @@ object {
       }
     object {
         width: 25vw;
+    }
+    .attention{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2em;
+        text-align: center;
+    }
+    .only-desktop {
+        display: block;
+    }
+
+    .only-mobile {
+        display: none;
     }
 }
 

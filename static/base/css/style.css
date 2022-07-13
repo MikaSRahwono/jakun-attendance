@@ -6,7 +6,7 @@
     --background-nav: transparent;
     --nav-dropdown: #FFFFFF;
     --nav-color: #144B84;
-    --background-footer: #2D2F43;
+    --background-footer: #EBECF0;
 
     --button-color: #144B84;
     --button-black: #000000;
@@ -376,7 +376,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-color);
+    color: black;
 
 }
 
@@ -1526,7 +1526,7 @@ label.profile-picture-container {
     .footer-bottom {
         display: grid;
         grid-template-columns: 0.1fr auto minmax(400px, 1fr) 0.1fr;
-        color: var(--text-color);
+        color: black;
     }
 
     .footer-bottom div {

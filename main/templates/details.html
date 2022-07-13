@@ -7,6 +7,16 @@
 {% endblock meta %}
 
 {% block content %}
+    <div class="attention only-desktop">
+        <h1 style="color: red">
+            Mahasiswa Baru diwajibkan untuk membawa <br> Kartu Pemkes + Print Out IDM pada laman SIAK-NG <br> untuk verifikasi pengambilan
+        </h1>
+    </div>
+    <div class="attention only-mobile">
+        <h1 style="color: red">
+            Mahasiswa Baru diwajibkan untuk membawa Kartu Pemkes + Print Out IDM pada laman SIAK-NG untuk verifikasi pengambilan
+        </h1>
+    </div>
 <div class="content-root">
     <div class="details-judul detail-only-desktop">
         <div class="row">
@@ -54,6 +64,8 @@
                 <p>{{ data.jurusan }}</p>
                 <h3>NPM</h3>
                 <p>{{ data.npm }}</p>
+                <h3>Jalur Masuk</h3>
+                <p>{{ data.jalur }}</p>
             </div>
             <div class="column">
                 <h3>Kontak</h3>
@@ -82,6 +94,8 @@
         <p>{{ data.jurusan }}</p>
         <h3>NPM</h3>
         <p>{{ data.npm }}</p>
+        <h3>Jalur Masuk</h3>
+        <p>{{ data.jalur }}</p>
         <h3>Kontak</h3>
         <p>{{ data.telepon }}<br>{{ data.email }}</p>
         <h3>Ukuran Jakun</h3>
@@ -94,6 +108,25 @@
             <h3>Pengabsen</h3>
             <p>{{ data.pengabsen }}</p>
         {% endif %}
+    </div>
+
+    <div class="kontak-adkes">
+        <br>
+        <h1>Kontak Adkesma BEM UI 2022</h1>
+        <div class="row">
+            <ol>
+                <li>Instragram: </li>
+                <li>OA Line: </li>
+                <li>Twitter: </li>
+                <li>Narahubung Jakun: <br>
+                    <ul>
+                        <li>Alex: (0851-5875-5854 || LINE: shirohachii)</li>
+                        <li>Jenet: (0812-8706-7699 || LINE: jeanetteclarista)</li>
+                        <li>Sena: (0858-0000-6797 || LINE: senaimamp)</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
     </div>
 
     <div class="button-outer">

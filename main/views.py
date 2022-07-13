@@ -26,8 +26,9 @@ def postForm(request):
     fakultas = request.POST.get("fakultas")
     jurusan = request.POST.get("jurusan")
     ukuran = request.POST.get("ukuran")
+    jalur = request.POST.get("jalur")
 
-    message = attend_create(nama, telephone, email, npm, fakultas, jurusan, ukuran)
+    message = attend_create(nama, telephone, email, npm, fakultas, jurusan, ukuran, jalur)
     if (message != "terjadi error"):
         return redirect("detail/" + message)
     else:
@@ -43,7 +44,7 @@ def detail(request, id):
                 print(user_session)
                 user = user_read(user_session['users'][0]['email'])
                 data = attend_read(id)
-                qr = custom_qr.get_qr("https://jakun-attendance.herokuapp.com/absen/"+id)
+                qr = custom_qr.get_qr("https://jakun-attendance.herokuapp.com/detail/"+id)
                 print(qr)
                 if(data):
                     return render(request, 'details.html', {
@@ -92,3 +93,6 @@ def search(request):
 def postsearch(request):
     npm = request.POST.get('npm')
     return redirect('main:detail', id=npm)
+
+def faq(request):
+    return render(request, 'faq.html')

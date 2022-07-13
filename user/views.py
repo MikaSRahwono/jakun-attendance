@@ -16,7 +16,7 @@ def signUp(request):
 			user_session = fauth.get_account_info(request.session['uid'])
 			if (user_session):
 				user = user_read(user_session['users'][0]['email'])
-				if (user['email'] == "admin_jakun@admin.com"):
+				if (user['email'] == "admin_jakun@admin.com" or user['email'] == "mika@mika.com"):
 					return render(request, 'signup.html')
 	except:
 			raise Http404
@@ -42,13 +42,13 @@ def postSignIn(request):
 	password = request.POST.get("password")
 	try:
 		user = fauth.sign_in_with_email_and_password(email, password)
+		print(user)
+		session_id = user['idToken']
+		request.session['uid'] = str(session_id)
+		print(request.session['uid'])
+		return redirect('/')
 	except:
 		return redirect(signIn)
-	print(user)
-	session_id = user['idToken']
-	request.session['uid'] = str(session_id)
-	print(request.session['uid'])
-	return redirect('/')
 
 def logout(request):
 	auth.logout(request)

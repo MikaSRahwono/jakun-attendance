@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Detail Request</title>
+    <link rel="stylesheet" href="{% static 'main/css/style-details.css' %}">
+{% endblock meta %}
+
+{% block content %}
+<div class="content-root">
+    <a href="{% url 'main:form' %}" id="button-kembali">&lt Kembali</a>
+
+    <div class="details-info detail-only-desktop">
+        <h1>Frequenly Asked Questions</h1>
+        <br>
+        <div class="row">
+            <h3 style="margin-top: 4em">1. Apakah saya perlu mendaftarkan diri untuk mengambil jakun?</h3>
+            <p>Mahasiswa Baru diwajibkan untuk mendaftar pada laman <a href="ui.id/JaketKuningUI2022">ui.id/JaketKuningUI2022</a></p>
+            <h3 style="margin-top: 3em">2. Apakah pengambilan Jaket Kuning dapat diwakilkan?</h3>
+            <p>Pengambilan Jaket Kuning 2022 hanya boleh dilakukan oleh Mahasiswa Baru yang bersangkutan dan tidak dapat diwakilkan oleh siapapun</p>
+            <h3 style="margin-top: 3em">3. Apakah diperbolehkan mengambil jakun di luar jadwal yang telah ditentukan?</h3>
+            <p>Para Mahasiswa Baru diharapkan untuk mengambil pada jadwal yang telah ditentukan. Pengambilan diluar jadwal hanya untuk dalam keadaan mendesak dengan disertai bukti yang valid</p>
+            <h3 style="margin-top: 3em">4. Apa yang kami bawa saat pengambilan Jaket Kuning?</h3>
+            <p>Mahasiswa Baru diwajibkan membawa Kartu Pemkes, Print Out IDM pada laman SIAK-NG masing-masing serta screenshot QR Code pada laman pengambilan Jaket Kuning</p>
+            <h3 style="margin-top: 3em">5. Apakah mahasiswa baru dapat menukar ukuran jakun?</h3>
+            <p>Pada proses verifikasi, ukuran jakun mahasiswa baru akan dicocokan dengan database IDM SIAK-NG. Jika terdapat perbedaan ukuran antara print out IDM dan database SIAK-NG, maka ukuran yang dipakai mengacu pada database SIAK-NG</p>
+            <h3 style="margin-top: 3em">6. Apakah pembagian jakun hanya untuk mahasiswa S1 saja?</h3>
+            <p>Pembagian jakun ini diperuntukan bagi semua jenjang dan program S1 dan Vokasi</p>
+            <h3 style="margin-top: 3em">7. Di mana letak Annex?</h3>
+            <p>Annex terletak di area Balairung Universitas Indonesia yang beralamat di Pondok Cina, Kecamatan Beji, Kota Depok, Jawa Barat 16424</p>
+        </div>
+    </div>
+    <div class="details-info only-mobile">
+        <h1>Frequenly Asked Questions</h1>
+        <br>
+        <div class="row">
+            <h3 style="margin-top: 4em">1. Apakah saya perlu mendaftarkan diri untuk mengambil jakun?</h3>
+            <p>Mahasiswa Baru diwajibkan untuk mendaftar pada laman <a href="ui.id/JaketKuningUI2022">ui.id/JaketKuningUI2022</a></p>
+            <h3 style="margin-top: 3em">2. Apakah pengambilan Jaket Kuning dapat diwakilkan?</h3>
+            <p>Pengambilan Jaket Kuning 2022 hanya boleh dilakukan oleh Mahasiswa Baru yang bersangkutan dan tidak dapat diwakilkan oleh siapapun</p>
+            <h3 style="margin-top: 3em">3. Apakah diperbolehkan mengambil jakun di luar jadwal yang telah ditentukan?</h3>
+            <p>Para Mahasiswa Baru diharapkan untuk mengambil pada jadwal yang telah ditentukan. Pengambilan diluar jadwal hanya untuk dalam keadaan mendesak dengan disertai bukti yang valid</p>
+            <h3 style="margin-top: 3em">4. Apa yang kami bawa saat pengambilan Jaket Kuning?</h3>
+            <p>Mahasiswa Baru diwajibkan membawa Kartu Pemkes, Print Out IDM pada laman SIAK-NG masing-masing serta screenshot QR Code pada laman pengambilan Jaket Kuning</p>
+            <h3 style="margin-top: 3em">5. Apakah mahasiswa baru dapat menukar ukuran jakun?</h3>
+            <p>Pada proses verifikasi, ukuran jakun mahasiswa baru akan dicocokan dengan database IDM SIAK-NG. Jika terdapat perbedaan ukuran antara print out IDM dan database SIAK-NG, maka ukuran yang dipakai mengacu pada database SIAK-NG</p>
+            <h3 style="margin-top: 3em">6. Apakah pembagian jakun hanya untuk mahasiswa S1 saja?</h3>
+            <p>Pembagian jakun ini diperuntukan bagi semua jenjang dan program S1 dan Vokasi</p>
+            <h3 style="margin-top: 3em">7. Di mana letak Annex?</h3>
+            <p>Annex terletak di area Balairung Universitas Indonesia yang beralamat di Pondok Cina, Kecamatan Beji, Kota Depok, Jawa Barat 16424</p>
+        </div>
+    </div>
+
+    <div class="button-outer">
+        {% if nama and data.absence == -1 %}
+        <form action="../absen/{{ id }}" method="post">
+            {% csrf_token %}
+            <input name="id_request" type="hidden" value={{ id }}>
+            <input name="nama" type="hidden" value={{ nama }}>
+            <button class="button" type="submit">Hadir</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

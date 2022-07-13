@@ -18,6 +18,7 @@
     margin-top: 5em;
     display: grid;
     text-align: left;
+    margin-bottom: 5em;
 }
 
 input[type=email],
@@ -36,6 +37,14 @@ input[type=password]
 #submitbutton {
     float: right;
     width: 100%;
+}
+
+.attention{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    text-align: center;
 }
 
 @media only screen and (min-width: 800px) {
