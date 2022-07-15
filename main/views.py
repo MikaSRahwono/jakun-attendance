@@ -4,7 +4,10 @@ from backend.CRUD.crud_attendance import attend_create, absent, attend_read
 from django.contrib import auth
 from django.http import Http404
 
+from backend.CRUD.crud_jadwal import sbm_read_all, simak_read_all
 from backend.CRUD.crud_user import user_read
+from backend.constants.jadwal import jadwal_jenis, jadwal_id, dictJadwal
+from backend.constants.jurusan import dictJurusan
 from backend.misc import firebase_init, custom_qr
 
 fauth = firebase_init
@@ -16,7 +19,12 @@ def index(request):
 # Authentication
 # --------------------
 def form(request):
-    return render(request, 'form.html')
+    jadwal_sbm = sbm_read_all()
+    jadwal_simak = simak_read_all()
+    return render(request, 'form.html', {
+        'jadwal_sbm': jadwal_sbm,
+        'jadwal_simak': jadwal_simak
+    })
 
 def postForm(request):
     nama = request.POST.get("nama")
@@ -24,11 +32,15 @@ def postForm(request):
     telephone = request.POST.get("telephone")
     npm = request.POST.get("npm")
     fakultas = request.POST.get("fakultas")
-    jurusan = request.POST.get("jurusan")
+    jurusan = request.POST.get(dictJurusan[fakultas])
     ukuran = request.POST.get("ukuran")
     jalur = request.POST.get("jalur")
+    jadwal = request.POST.get(dictJadwal[jalur])
 
-    message = attend_create(nama, telephone, email, npm, fakultas, jurusan, ukuran, jalur)
+    idJadwal = jadwal_id[jadwal]
+    jenisJadwal = jadwal_jenis[jadwal]
+
+    message = attend_create(nama, telephone, email, npm, fakultas, jurusan, ukuran, jalur, jadwal, idJadwal, jenisJadwal)
     if (message != "terjadi error"):
         return redirect("detail/" + message)
     else:
@@ -44,7 +56,7 @@ def detail(request, id):
                 print(user_session)
                 user = user_read(user_session['users'][0]['email'])
                 data = attend_read(id)
-                qr = custom_qr.get_qr("https://jakun-attendance.herokuapp.com/detail/"+id)
+                qr = custom_qr.get_qr("https://jaketkuningui2022.herokuapp.com/detail/"+id)
                 print(qr)
                 if(data):
                     return render(request, 'details.html', {
@@ -57,7 +69,7 @@ def detail(request, id):
                     raise Http404
     except:
         data = attend_read(id)
-        qr = custom_qr.get_qr("https://jakun-attendance.herokuapp.com/absen/" + id)
+        qr = custom_qr.get_qr("https://jaketkuningui2022.herokuapp.com/detail/" + id)
         if(data):
             return render(request, 'details.html', {
                 'data': data,

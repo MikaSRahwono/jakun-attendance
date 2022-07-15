@@ -1,0 +1,17 @@
+dictJurusan = {
+    'Fakultas Kedokteran':'jurusan-fk',
+    'Fakultas Kedokteran Gigi':'jurusan-fkg',
+    'Fakultas Kesehatan Masyarakat':'jurusan-fkm',
+    'Fakultas Farmasi':'jurusan-ff',
+    'Fakultas Ilmu Keperawatan':'jurusan-fik',
+    'Fakultas Matematika dan Ilmu Pengetahuan Alam':'jurusan-fmipa',
+    'Fakultas Ilmu Komputer':'jurusan-fasilkom',
+    'Fakultas Teknik':'jurusan-ft',
+    'Fakultas Hukum':'jurusan-fh',
+    'Fakultas Psikologi':'jurusan-psiko',
+    'Fakultas Ilmu Sosial Ilmu Politik':'jurusan-fisip',
+    'Fakultas Ilmu Pengetahuan Budaya':'jurusan-fib',
+    'Fakultas Ekonomi Bisnis':'jurusan-feb',
+    'Fakultas Ilmu Administrasi':'jurusan-fia',
+    'Vokasi':'jurusan-vokasi',
+}

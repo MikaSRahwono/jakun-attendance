@@ -1,6 +1,8 @@
+import os
+
 import requests
 
-API_KEY = "AIzaSyDNOwL6omMlevtZyb1oJUEHt3-owzVRn-w"
+API_KEY = os.getenv('FIREBASE_KEY')
 
 def sign_in_with_email_and_password(email, password):
     url_signin = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+API_KEY

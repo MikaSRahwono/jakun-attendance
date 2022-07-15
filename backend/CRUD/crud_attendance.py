@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore, storage
 
+from backend.CRUD.crud_jadwal import sbm_updateCounter, simak_updateCounter
 from backend.misc import firebase_init
 import datetime
 import pytz
@@ -19,7 +20,7 @@ db = firestore.client()
 # --------------------------
 # CRUD Functions
 # --------------------------
-def attend_create(nama, telepon, email, npm, fakultas, jurusan, ukuran, jalur):
+def attend_create(nama, telepon, email, npm, fakultas, jurusan, ukuran, jalur, jadwal, id_jadwal, jenis_jadwal):
     try:
         data = {
             'nama': nama,
@@ -29,12 +30,23 @@ def attend_create(nama, telepon, email, npm, fakultas, jurusan, ukuran, jalur):
             'fakultas': fakultas,
             'jurusan': jurusan,
             'ukuran': ukuran,
-            'link_page': 'https://jakun-attendance.herokuapp.com/detail/'+npm,
+            'link_page': 'https://jaketkuningui2022.herokuapp.com/detail/'+npm,
             'absence': -1,
             'jalur': jalur,
+            'jadwal': jadwal,
             'waktu_pengajuan': datetime.datetime.now(pytz.timezone('Asia/Jakarta')).strftime('%c')
         }
         db.collection('attendance').document(npm).set(data)
+
+        print(jenis_jadwal)
+        print(id_jadwal)
+
+        if jenis_jadwal == "jadwal_sbm":
+            print(11)
+            sbm_updateCounter(id_jadwal)
+        elif jenis_jadwal == "jadwal_simak":
+            print(22)
+            simak_updateCounter(id_jadwal)
 
         return npm
     except:

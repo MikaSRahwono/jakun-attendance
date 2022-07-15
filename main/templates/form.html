@@ -18,17 +18,17 @@
             <section>
                 <form action="postform" method="post" id="form">
                     {% csrf_token %}
-                    <label for="nama" >Nama</label>
-                    <input type="text" id="nama" name="nama" placeholder="Nama Anda..."> <br/>
+                    <label for="nama" >Nama *</label>
+                    <input required type="text" id="nama" name="nama" placeholder="Nama Anda..."> <br/>
 
-                    <label for="npm">NPM</label>
-                    <input type="number" id="npm" name="npm" placeholder="NPM anda..."><br/>
+                    <label for="npm">NPM (Nomor Pokok Mahasiswa) *</label>
+                    <input required type="number" id="npm" name="npm" placeholder="NPM anda..."><br/>
 
-                    <label for="email">Akun Gmail</label>
-                    <input type="email" id="email" name="email" placeholder="Email Anda..."><br/>
+                    <label for="email">Akun Gmail *</label>
+                    <input required type="email" id="email" name="email" placeholder="Email Anda..."><br/>
 
-                    <label for="fakultas" >Fakultas</label>
-                    <select id="fakultas" name="fakultas" onchange="showJurusan(this)">
+                    <label for="fakultas" >Fakultas *</label>
+                    <select required id="fakultas" name="fakultas" onchange="showJurusan(this)">
                         <option value="none">--Pilih Fakultas--</option>
                         <option value="Fakultas Kedokteran">Fakultas Kedokteran</option>
                         <option value="Fakultas Kedokteran Gigi">Fakultas Kedokteran Gigi</option>
@@ -47,30 +47,30 @@
                         <option value="Vokasi">Vokasi</option>
                     </select><br/>
 
-                    <label for="jurusan" id="label-jurusan" style="display: none;" >Jurusan</label>
+                    <label for="jurusan" id="label-jurusan" style="display: none;" >Jurusan *</label>
                     <div id="jurusan" style="display: none;">
-                        <select id="jurusan-fk">
+                        <select id="jurusan-fk" name="jurusan-fk">
                             <option value="Ilmu Kedokteran">Ilmu Kedokteran</option>
                         </select>
-                        <select id="jurusan-fkg">
+                        <select id="jurusan-fkg" name="jurusan-fkg">
                             <option value="Kedokteran Gigi">Kedokteran Gigi</option>
                         </select>
-                        <select id="jurusan-fkm">
+                        <select id="jurusan-fkm" name="jurusan-fkm">
                             <option value="Gizi">Gizi</option>
                             <option value="Kesehatan Lingkungan">Kesehatan Lingkungan</option>
                             <option value="Keselamatan dan Kesehatan Kerja">Keselamatan dan Kesehatan Kerja</option>
                             <option value="Kesehatan Masyarakat">Kesehatan Masyarakat</option>
                         </select>
-                        <select id="jurusan-ff">
+                        <select id="jurusan-ff" name="jurusan-ff">
                             <option value="Ilmu Farmasi">Ilmu Farmasi</option>
                         </select>
-                        <select id="jurusan-fik">
+                        <select id="jurusan-fik" name="jurusan-fik">
                             <option value="Ilmu Keperawatan">Ilmu Keperawatan</option>
                         </select>
-                        <select id="jurusan-psiko">
+                        <select id="jurusan-psiko" name="jurusan-psiko">
                             <option value="Psikologi">Psikologi</option>
                         </select>
-                        <select id="jurusan-fmipa">
+                        <select id="jurusan-fmipa" name="jurusan-fmipa">
                             <option value="Matematika">Matematika</option>
                             <option value="Kimia">Kimia</option>
                             <option value="Fisika">Fisika</option>
@@ -81,11 +81,11 @@
                             <option value="Statistika">Statistika</option>
                             <option value="Aktuaria">Aktuaria</option>
                         </select>
-                        <select id="jurusan-fasilkom">
+                        <select id="jurusan-fasilkom" name="jurusan-fasilkom">
                             <option value="Ilmu Komputer">Ilmu Komputer</option>
                             <option value="Sistem Informasi">Sistem Informasi</option>
                         </select>
-                        <select id="jurusan-ft">
+                        <select id="jurusan-ft" name="jurusan-ft">
                             <option value="Teknik Sipil">Teknik Sipil</option>
                             <option value="Teknik Lingkungan">Teknik Lingkungan</option>
                             <option value="Teknik Mesin">Teknik Mesin</option>
@@ -97,10 +97,10 @@
                             <option value="Arsitektur Interior">Arsitektur Interior</option>
                             <option value="Biro Keuangan">Biro Keuangan</option>
                         </select>
-                        <select id="jurusan-fh">
+                        <select id="jurusan-fh" name="jurusan-fh">
                             <option value="Ilmu Hukum">Ilmu Hukum</option>
                         </select>
-                        <select id="jurusan-fisip">
+                        <select id="jurusan-fisip" name="jurusan-fisip">
                             <option value="Ilmu Komunikasi">Ilmu Komunikasi</option>
                             <option value="Ilmu Politik">Ilmu Politik</option>
                             <option value="Kriminologi">Kriminologi</option>
@@ -109,7 +109,7 @@
                             <option value="Antropologi Sosial">Antropologi Sosial</option>
                             <option value="Hubungan Internasional">Hubungan Internasional</option>
                         </select>
-                        <select id="jurusan-fib">
+                        <select id="jurusan-fib" name="jurusan-fib">
                             <option value="Arkeologi">Arkeologi</option>
                             <option value="Sejarah">Sejarah</option>
                             <option value="Ilmu Filsafat">Ilmu Filsafat</option>
@@ -126,19 +126,19 @@
                             <option value="Sastra Rusia">Sastra Rusia</option>
                             <option value="Sastra Arab">Sastra Arab</option>
                         </select>
-                        <select id="jurusan-feb">
+                        <select id="jurusan-feb" name="jurusan-feb">
                             <option value="Ilmu Ekonomi">Ilmu Ekonomi</option>
                             <option value="Manajemen">Manajemen</option>
                             <option value="Akuntansi">Akuntansi</option>
                             <option value="Ilmu Ekonomi Islam">Ilmu Ekonomi Islam</option>
                             <option value="Bisnis Islam">Bisnis Islam</option>
                         </select>
-                        <select id="jurusan-fia">
+                        <select id="jurusan-fia" name="jurusan-fia">
                             <option value="Ilmu Administrasi Negara">Ilmu Administrasi Negara</option>
                             <option value="Ilmu Administrasi Niaga">Ilmu Administrasi Niaga</option>
                             <option value="Ilmu Administrasi Fiskal">Ilmu Administrasi Fiskal</option>
                         </select>
-                        <select id="jurusan-vokasi">
+                        <select id="jurusan-vokasi" name="jurusan-vokasi">
                             <option value="Administrasi Asuransi dan Aktuaria">Administrasi Asuransi dan Aktuaria</option>
                             <option value="Administrasi Keuangan dan Perbankan">Administrasi Keuangan dan Perbankan</option>
                             <option value="Administrasi Perkantoran dan Sekretari">Administrasi Perkantoran dan Sekretari</option>
@@ -155,8 +155,8 @@
                         </select>
                     </div>
 
-                    <label for="jalur" >Jalur Masuk UI</label>
-                    <select id="jalur" name="jalur">
+                    <label for="jalur" >Jalur Masuk UI *</label>
+                    <select id="jalur" name="jalur" onchange="showJadwal(this)">
                         <option value="none">--Pilih Jalur--</option>
                         <option value="PPKB/Talent Scouting">PPKB/Talent Scouting</option>
                         <option value="SNMPTN">SNMPTN</option>
@@ -166,10 +166,26 @@
                         <option value="Simak">Simak</option>
                     </select><br/>
 
-                    <label for="telephone" >Nomor Telepon</label>
-                    <input type="number" id="telephone" name="telephone" placeholder="Nomor Telepon..."><br/>
+                    <label for="jadwal" id="label-jadwal" style="display: none;" >Jadwal *</label>
+                    <div id="jadwal" style="display: none;">
+                        <select id="jadwal-simak" name="jadwal-simak">
+                            <option value="none">--Pilih Jadwal--</option>
+                            {% for jadwal in jadwal_simak %}
+                                <option value="{{ jadwal.jadwal }}">{{ jadwal.jadwal }}</option>
+                            {% endfor %}
+                        </select>
+                        <select id="jadwal-sbm" name="jadwal-sbm">
+                            <option value="none">--Pilih Jadwal--</option>
+                            {% for jadwal in jadwal_sbm %}
+                                <option value="{{ jadwal.jadwal }}">{{ jadwal.jadwal }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
 
-                    <label for="ukuran">Ukuran Jakun (Mohon mengisi ukuran sesuai dengan IDM pada SIAK-NG)</label>
+                    <label for="telephone" >Nomor Telepon *</label>
+                    <input required type="number" id="telephone" name="telephone" placeholder="Nomor Telepon..."><br/>
+
+                    <label for="ukuran">Ukuran Jakun * (Mohon mengisi ukuran sesuai dengan IDM pada SIAK-NG)</label>
                     <select id="ukuran" name="ukuran">
                         <option value="XS">XS</option>
                         <option value="S">S</option>
@@ -214,6 +230,7 @@
 
     </script>
     <script type="application/javascript" src="{% static 'main/js/dropdown-jurusan.js' %}"></script>
+    <script type="application/javascript" src="{% static 'main/js/dropdown-jadwal.js' %}"></script>
     <script>
         $('select option:first-child').attr("selected", "selected");
     </script>
