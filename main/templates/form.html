@@ -170,9 +170,6 @@
                     <div id="jadwal" style="display: none;">
                         <select id="jadwal-simak" name="jadwal-simak">
                             <option value="none">--Pilih Jadwal--</option>
-                            {% if jadwal_simak.26.quota != 0 %}
-                            <option value="26 Juli 2022">26 Juli 2022</option>
-                            {% endif %}
                             {% if jadwal_simak.27.quota != 0 %}
                             <option value="27 Juli 2022">27 Juli 2022</option>
                             {% endif %}
@@ -208,6 +205,9 @@
                             {% endif %}
                             {% if jadwal_sbm.25.quota != 0 %}
                             <option value="25 Juli 2022">25 Juli 2022</option>
+                            {% endif %}
+                            {% if jadwal_sbm.26.quota != 0 %}
+                            <option value="26 Juli 2022">26 Juli 2022</option>
                             {% endif %}
                         </select>
                     </div>

@@ -19,7 +19,7 @@ jadwal_jenis = {
     "21 Juli 2022": "jadwal_sbm",
     "22 Juli 2022": "jadwal_sbm",
     "25 Juli 2022": "jadwal_sbm",
-    "26 Juli 2022": "jadwal_simak",
+    "26 Juli 2022": "jadwal_sbm",
     "27 Juli 2022": "jadwal_simak",
     "28 Juli 2022": "jadwal_simak",
     "29 Juli 2022": "jadwal_simak",
