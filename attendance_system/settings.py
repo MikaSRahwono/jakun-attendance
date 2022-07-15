@@ -28,6 +28,7 @@ SECRET_KEY = '%*6xd(4q!7f!$9e%ap@x(it_xr7e)zlgf%l)v1_5r*^6a_7sp9'
 # DATABASE_URL is provided by Heroku if a database add-on is added
 # (e.g. Heroku Postgres).
 PRODUCTION = os.getenv('DATABASE_URL') is not None
+FIREBASE_KEY = os.getenv('FIREBASE_KEY')
 
 if PRODUCTION:
     SECRET_KEY = os.getenv('SECRET_KEY_DJANGO')
