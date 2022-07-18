@@ -21,7 +21,6 @@ def index(request):
 def form(request):
     jadwal_sbm = sbm_read_all()
     jadwal_simak = simak_read_all()
-    print(jadwal_sbm)
     return render(request, 'form.html', {
         'jadwal_sbm': jadwal_sbm,
         'jadwal_simak': jadwal_simak

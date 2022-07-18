@@ -22,7 +22,7 @@ db = firestore.client()
 def sbm_read_all():
     try:
         data_dict = []
-        datas = db.collection('jadwal_sbm').where('quota', '!=', 0).get()
+        datas = db.collection('jadwal_sbm').where('quota', '>', 0).get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict
@@ -33,11 +33,9 @@ def sbm_read_all():
 def simak_read_all():
     try:
         data_dict = []
-        datas = db.collection('jadwal_simak').where('quota', '!=', 0).get()
-        print(datas)
+        datas = db.collection('jadwal_simak').where('quota', '>', 0).get()
         for data in datas:
             data_dict.append(data.to_dict())
-            print(data_dict)
         return data_dict
     except:
         data_dict = []
@@ -50,7 +48,6 @@ def sbm_updateCounter(tanggal):
 
 def simak_updateCounter(tanggal):
     data = db.collection('jadwal_simak').document(tanggal).get().to_dict()
-    print(data)
     data['quota'] -= 1
     db.collection('jadwal_simak').document(tanggal).set(data)
 
