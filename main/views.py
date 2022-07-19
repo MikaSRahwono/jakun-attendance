@@ -65,15 +65,7 @@ def absen(request, id):
     return redirect('main:detail', id=id)
 
 def search(request):
-    try:
-        if (request.session['uid']):
-            user_session = fauth.get_account_info(request.session['uid'])
-            if (user_session):
-                return render(request, 'cari.html')
-        else:
-            raise Http404
-    except:
-        return redirect('user:signin')
+        return render(request, 'cari.html')
 
 def postsearch(request):
     npm = request.POST.get('npm')
