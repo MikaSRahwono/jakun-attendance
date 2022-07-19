@@ -23,31 +23,9 @@
                 <li>
                     <a href="{% url 'main:form' %}">Isi Form</a>
                 </li>
-                {% if not request.session.uid %}
-                <li class="nav-only-desktop">
-                    <a href="{% url 'user:signin' %}" class="button fit-content" style="height: fit-content; margin: 0; padding: 0.6em 1em;">Login Panitia</a>
-                </li>
-                <div class="nav-dropdown-buttons nav-only-mobile">
-                    <a href="{% url 'user:signin' %}" class="nav-only-mobile button btn-dashboard">
-                        Login Panitia
-                    </a>
-                </div>
-                {% elif request.session.uid %}
-                <li>
-                    <a href="{% url 'user:signup' %}">Tambah Panitia</a>
-                </li>
                 <li>
                     <a href="{% url 'main:search' %}">Cari NPM</a>
                 </li>
-                <li class="nav-only-desktop">
-                    <a href="{% url 'user:logout' %}" class="button fit-content" style="height: fit-content; margin: 0; padding: 0.6em 1em;">Logout</a>
-                </li>
-                <div class="nav-dropdown-buttons nav-only-mobile">
-                    <a href="{% url 'user:logout' %}" class="nav-only-mobile button btn-dashboard">
-                        Logout
-                    </a>
-                </div>
-                {% endif %}
             </ul>
         </nav>
 

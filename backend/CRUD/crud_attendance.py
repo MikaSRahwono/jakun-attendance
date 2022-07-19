@@ -60,11 +60,10 @@ def attend_read(npm):
         data = []
     return data
 
-def absent(npm, nama):
+def absent(npm):
     try:
         db.collection('attendance').document(npm).update({
             "absence": 1,
-            "pengabsen": nama,
             "waktu_pengambilan": datetime.datetime.now(pytz.timezone('Asia/Jakarta')).strftime('%c')
         })
         return ""

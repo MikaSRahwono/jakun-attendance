@@ -134,7 +134,7 @@
     </div>
 
     <div class="button-outer">
-        {% if nama and data.absence == -1 %}
+        {% if data.absence == -1 %}
         <form action="../absen/{{ id }}" method="post">
             {% csrf_token %}
             <input name="id_request" type="hidden" value={{ id }}>

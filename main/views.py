@@ -48,47 +48,20 @@ def postForm(request):
         return redirect("main:form")
 
 def detail(request, id):
-    try:
-        print("testing")
-        if (request.session['uid']):
-            user_session = fauth.get_account_info(request.session['uid'])
-            if (user_session):
-                print(user_session)
-                user = user_read(user_session['users'][0]['email'])
-                data = attend_read(id)
-                qr = custom_qr.get_qr("https://jaketkuningui2022.herokuapp.com/detail/"+id)
-                print(qr)
-                if(data):
-                    return render(request, 'details.html', {
-                        'nama': user['nama'],
-                        'data': data,
-                        'qr': qr,
-                        'id': id
-                    })
-                else:
-                    raise Http404
-    except:
-        data = attend_read(id)
-        qr = custom_qr.get_qr("https://jaketkuningui2022.herokuapp.com/detail/" + id)
-        if(data):
-            return render(request, 'details.html', {
-                'data': data,
-                'id': id,
-                'qr': qr,
-            })
-        else:
-            raise Http404
+    data = attend_read(id)
+    qr = custom_qr.get_qr("https://jaketkuningui2022.herokuapp.com/detail/" + id)
+    if(data):
+        return render(request, 'details.html', {
+            'data': data,
+            'id': id,
+            'qr': qr,
+        })
+    else:
+        raise Http404
 
 
 def absen(request, id):
-    try:
-        if(request.session["uid"]):
-            user_session = fauth.get_account_info(request.session['uid'])
-            if (user_session):
-                user = user_read(user_session['users'][0]['email'])
-                absent(id, user["nama"])
-    except:
-        pass
+    absent(id)
     return redirect('main:detail', id=id)
 
 def search(request):
