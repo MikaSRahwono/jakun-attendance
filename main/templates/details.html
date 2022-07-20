@@ -134,14 +134,14 @@
     </div>
 
     <div class="button-outer">
-{#        {% if data.absence == -1 %}#}
-{#        <form action="../absen/{{ id }}" method="post">#}
-{#            {% csrf_token %}#}
-{#            <input name="id_request" type="hidden" value={{ id }}>#}
-{#            <input name="nama" type="hidden" value={{ nama }}>#}
-{#            <button class="button" type="submit">Hadir</button>#}
-{#        </form>#}
-{#        {% endif %}#}
+        {% if data.absence == -1 %}
+        <form action="../absen/{{ id }}" method="post">
+            {% csrf_token %}
+            <input name="id_request" type="hidden" value={{ id }}>
+            <input name="nama" type="hidden" value={{ nama }}>
+            <button class="button" type="submit">Hadir</button>
+        </form>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
